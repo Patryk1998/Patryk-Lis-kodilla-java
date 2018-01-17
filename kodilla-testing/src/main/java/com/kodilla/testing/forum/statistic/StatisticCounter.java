@@ -25,9 +25,14 @@ public class StatisticCounter {
         //Posts Quantity
         postsQuantity = statistic.postsCount();
         //Rest
-        avPostsPerUser = postsQuantity/usersQuantity;
-        avCommentsPerPost = commentsQuantity/postsQuantity;
-        avCommentsPerUser = commentsQuantity/usersQuantity;
+        if(usersQuantity!=0) {
+            avPostsPerUser = postsQuantity / usersQuantity;
+            avCommentsPerUser = commentsQuantity / usersQuantity;
+        } else {avPostsPerUser = 0;
+                avCommentsPerUser = 0;}
+         if(postsQuantity!=0){
+             avCommentsPerPost = commentsQuantity / postsQuantity;
+         } else avCommentsPerPost = 0;
     }
 
     public void showStatistics(){
