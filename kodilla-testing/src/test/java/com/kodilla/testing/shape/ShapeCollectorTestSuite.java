@@ -1,10 +1,20 @@
 package com.kodilla.testing.shape;
 
 import org.junit.Assert;
+import org.junit.Before;
 import org.junit.Test;
 
 public class ShapeCollectorTestSuite {
 
+    static int counter = 0;
+    @Before
+    public void before(){
+        counter ++;
+        System.out.println("Test #" + counter +" done");
+
+
+
+    }
     @Test //checking if anything add
     public void addFigureTestV1(){
         //Given
@@ -23,7 +33,7 @@ public class ShapeCollectorTestSuite {
         Shape square = new Square(7);
         //When
         example.addFigure(square);
-        Shape test = example.getListElement(0);
+        Shape test = example.getFigure(0);
         //Then
         Assert.assertEquals(square, test);
     }
@@ -35,7 +45,7 @@ public class ShapeCollectorTestSuite {
         Shape square = new Square(3);
         example.addFigure(square);
         //When
-        example.removeListElemnt(square);
+        example.removeFigure(square);
         //Then
         Assert.assertFalse(example.containElement(square));
     }

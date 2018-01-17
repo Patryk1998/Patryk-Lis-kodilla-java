@@ -12,7 +12,11 @@ public class ShapeCollector {
 
      }
      public Shape getFigure(int n){
-         return shapes.get(n);
+         Shape figure = null;
+         if(n>=0 && n<shapes.size()){
+             figure = shapes.get(n);
+         }
+         return figure;
 
      }
 
@@ -29,13 +33,9 @@ public class ShapeCollector {
          return shapes.size();
     }
 
-    public Shape getListElement(int n){
-         return shapes.get(n);
-    }
 
-    public void removeListElemnt(Shape shape){
-         shapes.remove(shape);
-    }
+
+
 
     public boolean containElement(Shape shape){
          return shapes.contains(shape);
