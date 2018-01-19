@@ -76,6 +76,10 @@ public class calculateAdvStatisticsTest {
         Assert.assertEquals(100, test.getUsersQuantity());
         Assert.assertEquals(1000, test.getPostsQuantity());
         Assert.assertEquals(0, test.getCommentsQuantity());
+        Assert.assertEquals(0, test.getAvCommentsPerPost(), 0);
+        Assert.assertEquals(0, test.getAvCommentsPerUser(), 0);
+        Assert.assertEquals(10, test.getAvPostsPerUser(),0 );
+
     }
 
     @Test
@@ -98,6 +102,8 @@ public class calculateAdvStatisticsTest {
         Assert.assertEquals(100, test.getUsersQuantity());
         Assert.assertEquals(4000, test.getPostsQuantity());
         Assert.assertEquals(1000, test.getCommentsQuantity());
+
+
     }
 
     @Test

@@ -12,6 +12,18 @@ public class StatisticCounter {
     double avCommentsPerUser;
     double avCommentsPerPost;
 
+    public double getAvPostsPerUser() {
+        return avPostsPerUser;
+    }
+
+    public double getAvCommentsPerUser() {
+        return avCommentsPerUser;
+    }
+
+    public double getAvCommentsPerPost() {
+        return avCommentsPerPost;
+    }
+
     public StatisticCounter(Statistic statistic) {
         this.statistic = statistic;
     }

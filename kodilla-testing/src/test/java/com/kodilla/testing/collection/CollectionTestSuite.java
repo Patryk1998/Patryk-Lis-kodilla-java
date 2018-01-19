@@ -33,26 +33,15 @@ public class CollectionTestSuite
     {
         //Given
         ArrayList<Integer> normalList = new ArrayList<>();
-        Random genenerator = new Random();
-        for(int i=0; i<98; i++)
-        {
-            normalList.add(genenerator.nextInt(100));
-        }
         normalList.add(77);
         normalList.add(42); //guarante for including both types of numbers
         OddNumbersExterminator test = new OddNumbersExterminator();
         //When
         ArrayList<Integer> finalNormalList = test.exterminate(normalList);
-        int evenQuantity=0;
-        for(Integer number: finalNormalList)
-        {
-            if(number%2==0)
-            {
-                evenQuantity++;
-            }
-        }
+        ArrayList<Integer> resultList = new ArrayList<>();
+        resultList.add(42);
         //Then
         int finalNormalListSize = finalNormalList.size();
-        Assert.assertEquals(finalNormalListSize, evenQuantity);
+        Assert.assertEquals(resultList, finalNormalList);
     }
 }

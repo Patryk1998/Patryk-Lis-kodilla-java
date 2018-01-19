@@ -102,7 +102,7 @@ public class BookDirectoryTestSuite {
         List<Book> noBook = new ArrayList<Book>();
         when(libraryDatabase.listBooksInHandsOf(tom)).thenReturn(noBook);
         //When
-        List<Book> rentBooks = libraryDatabase.listBooksInHandsOf(tom);
+        List<Book> rentBooks = bookLibrary.listBooksInHandsOf(tom);
         //Then
         assertEquals(0, rentBooks.size());
 
@@ -117,7 +117,7 @@ public class BookDirectoryTestSuite {
         List<Book> oneBook = generateListOfNBooks(1);
         when(libraryDatabase.listBooksInHandsOf(tom)).thenReturn(oneBook);
         //When
-        List<Book> rentBooks = libraryDatabase.listBooksInHandsOf(tom);
+        List<Book> rentBooks = bookLibrary.listBooksInHandsOf(tom);
         //Then
         assertEquals(1, rentBooks.size());
     }
@@ -131,7 +131,7 @@ public class BookDirectoryTestSuite {
         List<Book> fiveBooks = generateListOfNBooks(5);
         when(libraryDatabase.listBooksInHandsOf(tom)).thenReturn(fiveBooks);
         //When
-        List<Book> rentBooks = libraryDatabase.listBooksInHandsOf(tom);
+        List<Book> rentBooks = bookLibrary.listBooksInHandsOf(tom);
         //Then
         assertEquals(5, rentBooks.size());
     }
