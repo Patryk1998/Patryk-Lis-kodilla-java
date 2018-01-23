@@ -11,6 +11,7 @@ import stream.person.People;
 import stream.reference.FunctionalCalculator;
 import stream.iterate.NumberGenerator;
 
+import java.time.LocalDate;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -59,10 +60,10 @@ public class StreamMain {
 //        System.out.println(theResultStringOfBooks);
 
         Forum forum = new Forum();
-
+        LocalDate now = LocalDate.now();
         Map<Integer, ForumUser> par = forum.getUsersList().stream()
                 .filter(user -> user.getSex() =='M')
-                .filter(user -> 2018 - user.getBirthYear() > 20)
+                .filter(user -> now.getYear() - user.getBirthYear() > 20)
                 .filter(user -> user.getPostsQuantity() >= 1)
                 .collect(Collectors.toMap(ForumUser::getIdentifier, user -> user ));
 
@@ -70,7 +71,11 @@ public class StreamMain {
         par.entrySet().stream()
                 .map(user-> user.getKey() + ": " + user.getValue())
                 .forEach(System.out::println);
+
+        System.out.println(now.getYear());
     }
+
+
 
 
 
