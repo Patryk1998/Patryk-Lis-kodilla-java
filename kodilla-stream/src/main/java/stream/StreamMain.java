@@ -60,14 +60,14 @@ public class StreamMain {
 
         Forum forum = new Forum();
 
-        Map<Integer, Object> theResultMap = forum.getUsersList().stream()
+        Map<Integer, ForumUser> par = forum.getUsersList().stream()
                 .filter(user -> user.getSex() =='M')
                 .filter(user -> 2018 - user.getBirthYear() > 20)
-                .filter(user -> user.getPostsQuantity() > 1)
+                .filter(user -> user.getPostsQuantity() >= 1)
                 .collect(Collectors.toMap(ForumUser::getIdentifier, user -> user ));
 
-        System.out.println("Quantity of forum users: " + theResultMap.size());
-        theResultMap.entrySet().stream()
+        System.out.println("Quantity of forum users: " + par.size());
+        par.entrySet().stream()
                 .map(user-> user.getKey() + ": " + user.getValue())
                 .forEach(System.out::println);
     }

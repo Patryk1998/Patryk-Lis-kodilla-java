@@ -47,7 +47,7 @@ public final class ForumUser {
 
     @Override
     public String toString(){
-        return username + " " + sex +" "+ birthDate + " " + postsQuantity;
+        return "Username: " + username + ", sex: " + sex +", birth date: "+ birthDate + ", posts quantity: " + postsQuantity;
 
     }
 }
