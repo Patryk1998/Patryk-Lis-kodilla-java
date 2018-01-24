@@ -73,6 +73,8 @@ public class StreamMain {
                 .forEach(System.out::println);
 
         System.out.println(now.getYear());
+
+
     }
 
 

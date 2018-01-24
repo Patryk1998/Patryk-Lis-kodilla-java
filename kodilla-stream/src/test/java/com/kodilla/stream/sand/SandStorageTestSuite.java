@@ -1,0 +1,33 @@
+package com.kodilla.stream.sand;
+
+import org.junit.Assert;
+import org.junit.Test;
+import stream.Sand.Afrika;
+import stream.Sand.Asia;
+import stream.Sand.Europe;
+import stream.Sand.SandStorage;
+
+import java.math.BigDecimal;
+import java.util.ArrayList;
+import java.util.List;
+
+public class SandStorageTestSuite {
+    @Test
+    public void testGetSandBeansQuantity() {
+        //Given
+        List<SandStorage> continents = new ArrayList<>();
+        continents.add(new Europe());
+        continents.add(new Asia());
+        continents.add(new Afrika());
+
+        //When
+        BigDecimal totalSand = BigDecimal.ZERO;
+        for(SandStorage continent : continents){
+            totalSand = totalSand.add(continent.getSandBeansQuantity());
+        }
+
+        //Then
+        BigDecimal expectedSand = new BigDecimal("211111110903703703670");
+        Assert.assertEquals(expectedSand, totalSand);
+    }
+}
