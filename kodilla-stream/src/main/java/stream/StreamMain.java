@@ -59,7 +59,7 @@ public class StreamMain {
 //                System.out.println("You Choose n");
 //                break;
 //            }
-
+System.out.println("rock \n rock");
         }
 
 
