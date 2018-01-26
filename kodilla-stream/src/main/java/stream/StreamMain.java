@@ -11,75 +11,61 @@ import stream.person.People;
 import stream.reference.FunctionalCalculator;
 import stream.iterate.NumberGenerator;
 
+import java.math.BigDecimal;
 import java.time.LocalDate;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.util.stream.Collectors;
 
 public class StreamMain {
     public static void main(String[] args) {
-//        ExpressionExecutor expressionExecutor = new ExpressionExecutor();
+        Scanner input = new Scanner(System.in);
 //
-//        System.out.println("Calculating expressions with lambdas");
-//        expressionExecutor.executeExpression(10, 5, (a, b) -> a + b);
-//        expressionExecutor.executeExpression(10, 5, (a, b) -> a - b);
-//        expressionExecutor.executeExpression(10, 5, (a, b) -> a * b);
-//        expressionExecutor.executeExpression(10, 5, (a, b) -> a / b);
+//        System.out.println("Put your name: ");
+//        String name = input.nextLine();
+//        System.out.println("Number of games: ");
+//        int gamesQuantity = input.nextInt();
 //
-//        System.out.println("Calculating expressions with method references");
-//        expressionExecutor.executeExpression(3, 4, FunctionalCalculator::multiplyAByB);
-//        expressionExecutor.executeExpression(3, 4, FunctionalCalculator::addAToB);
-//        expressionExecutor.executeExpression(3, 4, FunctionalCalculator::subBFromA);
-//        expressionExecutor.executeExpression(3, 4, FunctionalCalculator::divideAByB);
+////        System.out.println("MENU");
+////        System.out.println("1 - ROCK");
+////        System.out.println("2 - PAPER");
+////        System.out.println("3 - SCISSORS");
+////        System.out.println("x - END GAME");
+////        System.out.println("n - NEW GAME");
 //
-//
-//        PoemBeautifier poemBeautifier = new PoemBeautifier();
-//        poemBeautifier.beautify("to jest EXAMPLE", text -> text.toUpperCase());
-//        poemBeautifier.beautify("to jest EXAMPLE", text -> "ABC" + text + "ABC");
-//        poemBeautifier.beautify("to jest EXAMPLE", text -> text.toUpperCase().substring(3, 7));
-//        poemBeautifier.beautify("to jest EXAMPLE", text -> text.toLowerCase());
-//
-//
-//        System.out.println("Using Stream to generate even numbers from 1 to 20");
-//        NumberGenerator.generateEven(20);
-//
-//        People.getList().stream()
-//                .map(String::toUpperCase)
-//                .filter(s -> s.length() > 11)
-//                .map(s -> s.substring(0, s.indexOf(' ')+2) +".")
-//                .filter(s -> s.substring(0,1).equals("M"))
-//                .forEach(s -> System.out.println(s));
-//
-//        BookDirectory theBookDirectory = new BookDirectory();
-//        String theResultStringOfBooks = theBookDirectory.getList().stream()
-//                .filter(book -> book.getYearOfPublication() > 2005)
-//                .map(Book::toString)
-//                .collect(Collectors.joining(",\n","<<",">>"));
-//
-//        System.out.println(theResultStringOfBooks);
+//        System.out.println("Your move: ");
+//        String move = input.nextLine().nextLine();
+//        System.out.println(move);
+//       // Random generator = new Random();
+//        //String computerMove = Integer.toString(generator.nextInt(3)+1);
 
-        Forum forum = new Forum();
-        LocalDate now = LocalDate.now();
-        Map<Integer, ForumUser> par = forum.getUsersList().stream()
-                .filter(user -> user.getSex() =='M')
-                .filter(user -> now.getYear() - user.getBirthYear() > 20)
-                .filter(user -> user.getPostsQuantity() >= 1)
-                .collect(Collectors.toMap(ForumUser::getIdentifier, user -> user ));
+//        switch(move){
+//            case "1": {
+//                System.out.println("You Choose 1");
+//                break;
+//            }
+//            case "2":{
+//                System.out.println("You Choose 2");
+//                break;
+//            }
+//            case "3":{
+//                System.out.println("You Choose 3");
+//                break;
+//            }
+//            case "x":{
+//                System.out.println("You Choose x");
+//                break;
+//            }
+//            case "n":{
+//                System.out.println("You Choose n");
+//                break;
+//            }
 
-        System.out.println("Quantity of forum users: " + par.size());
-        par.entrySet().stream()
-                .map(user-> user.getKey() + ": " + user.getValue())
-                .forEach(System.out::println);
-
-        System.out.println(now.getYear());
-
-
-    }
+        }
 
 
 
 
+        }
 
-}
+
 
