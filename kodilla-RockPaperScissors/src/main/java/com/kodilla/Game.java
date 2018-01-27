@@ -8,20 +8,24 @@ public class Game {
         Scanner input = new Scanner(System.in);
         Engine engine = new Engine();
         engine.playerInfo();
+        while(engine.getGames() == engine.getComputerP() || engine.getGames() == engine.getPlayerP()){
         strings.askAboutMove();
         String playerMove = "";
         String playerMoveString = "";
         if(input.hasNextInt()){
             playerMove = Integer.toString(input.nextInt());
         } else playerMoveString = input.nextLine();
-        if(playerMove.equals("1") || playerMove.equals("2") || playerMove.equals("3")){
-            engine.game(playerMove);
-        } else if(playerMoveString.equals("x")){
-            engine.restOptions(playerMoveString);
-        } else if(playerMoveString.equals("n")) {
-            System.out.println("Do you relly want to stary new game?\nPress n to confirm.");
-            if(input.nextLine().equals("n")){
 
+            if (playerMove.equals("1") || playerMove.equals("2") || playerMove.equals("3")) {
+                engine.game(playerMove);
+            } else if (playerMoveString.equals("x")) {
+                engine.restOptions(playerMoveString);
+            } else if (playerMoveString.equals("n")) {
+                System.out.println("Do you relly want to stary new game?\nPress n to confirm.");
+                if (input.nextLine().equals("n")) {
+
+
+                }
             }
         }
 

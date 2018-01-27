@@ -91,6 +91,13 @@ public class Engine {
     public int getGames(){
         return player.getGames();
     }
+
+    public int getComputerP(){
+        return player.getComputerPoints();
+    }
+    public int getPlayerP(){
+        return player.getPlayerPoints();
+    }
 }
 
 
