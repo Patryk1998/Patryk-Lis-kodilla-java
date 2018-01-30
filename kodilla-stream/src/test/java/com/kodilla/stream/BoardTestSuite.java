@@ -117,19 +117,44 @@ public class BoardTestSuite {
 
 
     }
+    @Test
+    public void testAddTaskListFindOutdatedTasks() {
+        //Given
+        Board project = prepareTestData();
+        //When
+        List<TaskList> undoneList = new ArrayList<>();
+        undoneList.add(new TaskList("In progress"));
+        undoneList.add(new TaskList("To do"));
 
-  //  @Test
-//    public void testAddTaskListAverageWorkingOnTask(){
-//        //Given
-//        Board project = prepareTestData();
-//        List<TaskList> test = new ArrayList<>();
-//        test.add(new TaskList("In progress"));
-//        //Then
-//        OptionalDouble avTime = project.getTaskLists().stream()
-//                .filter(test::contains)
-//                .flatMap(taskList -> taskList.getTasks().stream());
-//             //   .map(task -> LocalDate.now().getDayOfMonth() - task.getCreated().getDayOfMonth())
-//        System.out.println(avTime.getAsDouble());
-//
-//    }
+        List<Task> undone = project.getTaskLists().stream()
+                .filter(undoneList::contains)
+                .flatMap(taskList -> taskList.getTasks().stream())
+                .filter(task -> task.getDeadline().isBefore(LocalDate.now()))
+                .collect(Collectors.toList());
+
+        //Then
+        Assert.assertEquals(1, undone.size());
+        Assert.assertEquals("HQLs for analysis", undone.get(0).getTitle());
+    }
+
+
+        @Test
+    public void testAddTaskListAverageWorkingOnTask(){
+        //Given
+        Board project = prepareTestData();
+        List<TaskList> test = new ArrayList<>();
+        test.add(new TaskList("In progress"));
+        //When
+        OptionalDouble average = project.getTaskLists().stream()
+                .filter(test::contains)
+                .flatMap(taskList -> taskList.getTasks().stream())
+                .mapToInt(task -> LocalDate.now().getDayOfMonth() - task.getCreated().getDayOfMonth())
+                .average();
+        //Then
+        Assert.assertEquals(10, average.getAsDouble(), 0);
+
+
+
+
+    }
 }
