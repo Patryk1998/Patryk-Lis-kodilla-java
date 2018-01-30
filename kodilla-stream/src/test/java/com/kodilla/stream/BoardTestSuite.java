@@ -8,6 +8,7 @@ import stream.portfolio.TaskList;
 import stream.portfolio.User;
 
 import java.time.LocalDate;
+import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.OptionalDouble;
@@ -107,10 +108,13 @@ public class BoardTestSuite {
     public void testAddTaskListFindLongTasks(){
         //Given
        Board project = prepareTestData();
+       List<TaskList> test = new ArrayList<>();
+       test.add(new TaskList("In progress"));
        //When
         List<Task> result = project.getTaskLists().stream()
+                .filter(test::contains)
                 .flatMap(taskList -> taskList.getTasks().stream())
-                .filter(task -> LocalDate.now().getDayOfMonth() - task.getCreated().getDayOfMonth() > 10)
+                .filter(task -> LocalDate.now().getDayOfMonth() - task.getCreated().getDayOfMonth() >= 10)
                 .collect(Collectors.toList());
         //Then
         Assert.assertEquals(2, result.size());
@@ -148,12 +152,11 @@ public class BoardTestSuite {
         OptionalDouble average = project.getTaskLists().stream()
                 .filter(test::contains)
                 .flatMap(taskList -> taskList.getTasks().stream())
-                .mapToInt(task -> LocalDate.now().getDayOfMonth() - task.getCreated().getDayOfMonth())
+                .mapToInt(task -> (int) ChronoUnit.DAYS.between(task.getCreated(), LocalDate.now()))
+                // coś takiego?
                 .average();
         //Then
         Assert.assertEquals(10, average.getAsDouble(), 0);
-
-
 
 
     }

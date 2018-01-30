@@ -1,4 +1,6 @@
 include 'kodilla-testing'
 include 'kodilla-stream'
 include 'kodilla-RockPaperScissors'
+include 'exception'
+include 'kodilla-exception'
 
