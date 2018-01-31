@@ -17,7 +17,7 @@ public class FirstChallenge {
         FirstChallenge firstChallenge = new FirstChallenge();
 
        try{
-           double result = firstChallenge.divide(3, 1);
+           double result = firstChallenge.divide(3, 0);
            System.out.println(result);
        } catch (ArithmeticException e){
            System.out.println("Result: 0");

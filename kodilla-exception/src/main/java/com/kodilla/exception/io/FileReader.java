@@ -24,9 +24,5 @@ public class FileReader {
             System.out.println("Something went wrong!" + e);
 
         }
-
-
-
-
     }
 }
