@@ -152,8 +152,7 @@ public class BoardTestSuite {
         OptionalDouble average = project.getTaskLists().stream()
                 .filter(test::contains)
                 .flatMap(taskList -> taskList.getTasks().stream())
-                .mapToInt(task -> (int) ChronoUnit.DAYS.between(task.getCreated(), LocalDate.now()))
-                // coś takiego?
+                .mapToDouble(task -> ChronoUnit.DAYS.between(task.getCreated(), LocalDate.now()))
                 .average();
         //Then
         Assert.assertEquals(10, average.getAsDouble(), 0);

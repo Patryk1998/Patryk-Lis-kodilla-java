@@ -5,13 +5,22 @@ import java.util.Map;
 
 public class ListOfProducts {
 
-    public static final Map<String, Integer> createListFor1Company() {
-        Map<String, Integer> resultMap = new HashMap<>();
-        resultMap.put("White bread", 24);
-        resultMap.put("Dark bread", 3);
-        resultMap.put("Dietetic bread", 80);
-        return resultMap;
+    public static Map<String, Integer> extraFood = new HashMap<>();
+    static {
+        extraFood.put("White bread", 24);
+        extraFood.put("Dark bread", 3);
+        extraFood.put("Dietetic bread", 80);
     }
+
+
+
+//    public static final Map<String, Integer> createListFor1Company() {
+//        Map<String, Integer> resultMap = new HashMap<>();
+//        resultMap.put("White bread", 24);
+//        resultMap.put("Dark bread", 3);
+//        resultMap.put("Dietetic bread", 80);
+//        return resultMap;
+//    }
 
     public static final Map<String, Integer> createListFor2Company() {
         Map<String, Integer> resultMap = new HashMap<>();
