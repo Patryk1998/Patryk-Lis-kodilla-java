@@ -3,40 +3,34 @@ package com.kodilla;
 import java.util.Scanner;
 
 public class Game {
-    public static void main(String[] args){
-        Strings strings = new Strings();
+
+    public static void game() {
+
         Scanner input = new Scanner(System.in);
         Engine engine = new Engine();
-        engine.playerInfo();
-        while(engine.getGames() == engine.getComputerP() || engine.getGames() == engine.getPlayerP()){
-        strings.askAboutMove();
-        String playerMove = "";
-        String playerMoveString = "";
-        if(input.hasNextInt()){
-            playerMove = Integer.toString(input.nextInt());
-        } else playerMoveString = input.nextLine();
+
+        engine.roundInfo();
+        Strings.getMenu();
+        while (true) {
+            Strings.askAboutMove();
+            String playerMove = input.nextLine();
 
             if (playerMove.equals("1") || playerMove.equals("2") || playerMove.equals("3")) {
-                engine.game(playerMove);
-            } else if (playerMoveString.equals("x")) {
-                engine.restOptions(playerMoveString);
-            } else if (playerMoveString.equals("n")) {
-                System.out.println("Do you relly want to stary new game?\nPress n to confirm.");
-                if (input.nextLine().equals("n")) {
-
-
+                engine.rockPaperScissors(playerMove);
+                if (Points.getPlayerPoints() == engine.getGames()) {
+                    System.out.println("You won this game!");
+                    System.exit(2);
+                } else if (Points.getComputerPoints() == engine.getGames()) {
+                    System.out.println("Computer won this game!");
+                    System.exit(3);
                 }
+            } else if (playerMove.equals("x") || playerMove.equals("n")) {
+                engine.restOptions(playerMove);
             }
         }
-
-
-
-
-
-
-
+    }
 
     }
 
 
-    }
+

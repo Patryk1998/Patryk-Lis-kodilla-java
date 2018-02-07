@@ -2,15 +2,15 @@ package com.kodilla;
 
 public class Strings {
 
-    public  void askAboutName(){
+    public static void askAboutName(){
         System.out.println("Enter your name: ");
     }
 
-    public void numberOfWonGames(){
+    public static void numberOfWonGames(){
         System.out.println("How many points do you wanna get before win?");
     }
 
-    public void getMenu(){
+    public static void getMenu(){
         System.out.println("MENU");
         System.out.println("1 - ROCK");
         System.out.println("2 - PAPER");
@@ -19,7 +19,7 @@ public class Strings {
         System.out.println("n - NEW GAME");
     }
 
-    public void askAboutMove(){
+    public static void askAboutMove(){
         System.out.println("Your move: ");
     }
 
