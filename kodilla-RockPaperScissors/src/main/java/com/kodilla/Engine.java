@@ -5,6 +5,7 @@ import java.util.Scanner;
 public class Engine {
 
     private Scanner input = new Scanner(System.in);
+    Points points = new Points();
     private Round round;
 
     public void rockPaperScissors(String playerMove) {
@@ -16,38 +17,38 @@ public class Engine {
                     System.out.println("Player: ROCK\nComputer: ROCK\n(DRAW)");
                 } else if (computer.equals("2")) {
                     System.out.println("Player: ROCK\nComputer: PAPER\n(POINT FOR COMPUTER)");
-                    Points.addComputerPoint();
-                    Points.getPointsInfo();
+                    points.addComputerPoint();
+                    points.getPointsInfo();
                 } else if (computer.equals("3")) {
                     System.out.println("Player: ROCK\nComputer: SCISSORS\n(POINT FOR PLAYER)");
-                    Points.addPlayerPoint();
-                    Points.getPointsInfo();
+                    points.addPlayerPoint();
+                    points.getPointsInfo();
                 }
                 break;
             }
             case "2": {
                 if (computer.equals("1")) {
                     System.out.println("Player: PAPER\nComputer: ROCK\n(POINT FOR PLAYER)");
-                    Points.addPlayerPoint();
-                    Points.getPointsInfo();
+                    points.addPlayerPoint();
+                    points.getPointsInfo();
                 } else if (computer.equals("2")) {
                     System.out.println("Player: PAPER\nComputer: PAPER\n(DRAW)");
                 } else if (computer.equals("3")) {
                     System.out.println("Player: PAPER\nComputer: SCISSORS\n(POINT FOR COMPUTER)");
-                    Points.addComputerPoint();
-                    Points.getPointsInfo();
+                    points.addComputerPoint();
+                    points.getPointsInfo();
                 }
                 break;
             }
             case "3": {
                 if (computer.equals("1")) {
                     System.out.println("Player: SCISSORS\nComputer: ROCK\n(POINT FOR COMPUTER)");
-                    Points.addComputerPoint();
-                    Points.getPointsInfo();
+                    points.addComputerPoint();
+                    points.getPointsInfo();
                 } else if (computer.equals("2")) {
                     System.out.println("Player: SCISSORS\nComputer: PAPER\n(POINT FOR PLAYER)");
-                    Points.addPlayerPoint();
-                    Points.getPointsInfo();
+                    points.addPlayerPoint();
+                    points.getPointsInfo();
                 } else if (computer.equals("3")) {
                     System.out.println("Player: SCISSORS\nComputer: SCISSORS\n(DRAW)");
                 }

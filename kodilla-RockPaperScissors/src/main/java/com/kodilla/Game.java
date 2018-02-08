@@ -7,6 +7,7 @@ public class Game {
     public static void game() {
 
         Scanner input = new Scanner(System.in);
+        Points points = new Points();
         Engine engine = new Engine();
 
         engine.roundInfo();
@@ -17,10 +18,10 @@ public class Game {
 
             if (playerMove.equals("1") || playerMove.equals("2") || playerMove.equals("3")) {
                 engine.rockPaperScissors(playerMove);
-                if (Points.getPlayerPoints() == engine.getGames()) {
+                if (points.getPlayerPoints() == engine.getGames()) {
                     System.out.println("You won this game!");
                     System.exit(2);
-                } else if (Points.getComputerPoints() == engine.getGames()) {
+                } else if (points.getComputerPoints() == engine.getGames()) {
                     System.out.println("Computer won this game!");
                     System.exit(3);
                 }

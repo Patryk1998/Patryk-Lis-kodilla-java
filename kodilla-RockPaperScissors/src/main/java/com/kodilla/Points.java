@@ -2,26 +2,26 @@ package com.kodilla;
 
 public class Points {
 
-    private static int computerPoints = 0;
-    private static int playerPoints = 0;
+    private int computerPoints = 0;
+    private int playerPoints = 0;
 
-    public static void addPlayerPoint(){
+    public void addPlayerPoint(){
         playerPoints++;
     }
 
-    public static void addComputerPoint(){
+    public void addComputerPoint(){
         computerPoints++;
     }
 
-    public static int getComputerPoints() {
+    public int getComputerPoints() {
         return computerPoints;
     }
 
-    public static int getPlayerPoints() {
+    public int getPlayerPoints() {
         return playerPoints;
     }
 
-    public static void getPointsInfo() {
+    public void getPointsInfo() {
         System.out.println("Player: " + getPlayerPoints() + "\nComputer: " + getComputerPoints());
     }
 
