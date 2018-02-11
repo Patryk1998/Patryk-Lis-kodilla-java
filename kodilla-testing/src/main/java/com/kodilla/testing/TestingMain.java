@@ -8,10 +8,6 @@ import java.util.Scanner;
 
 public class TestingMain {
     public static void main(String[] args) {
-        Scanner input = new Scanner(System.in);
-        System.out.println("Podaj liczbe binarna: ");
-        int liczba = input.nextInt();
-        liczba.
 
 
 

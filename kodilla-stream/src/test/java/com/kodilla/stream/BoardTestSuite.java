@@ -114,7 +114,7 @@ public class BoardTestSuite {
         List<Task> result = project.getTaskLists().stream()
                 .filter(test::contains)
                 .flatMap(taskList -> taskList.getTasks().stream())
-                .filter(task -> LocalDate.now().getDayOfMonth() - task.getCreated().getDayOfMonth() >= 10)
+                .filter(task -> ChronoUnit.DAYS.between(task.getCreated(), LocalDate.now()) >= 10)
                 .collect(Collectors.toList());
         //Then
         Assert.assertEquals(2, result.size());

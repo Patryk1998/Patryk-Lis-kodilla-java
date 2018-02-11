@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 public class Engine {
 
-    private Scanner input = new Scanner(System.in);
+    Scanner input = new Scanner(System.in);
     Points points = new Points();
     private Round round;
 
