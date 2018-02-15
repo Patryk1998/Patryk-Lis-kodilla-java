@@ -9,6 +9,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+import org.springframework.context.annotation.Scope;
 import org.springframework.test.context.junit4.SpringRunner;
 import java.util.Arrays;
 
@@ -21,20 +22,21 @@ public class BoardTestSuite {
         //Given
         ApplicationContext context = new AnnotationConfigApplicationContext(BoardConfig.class);
         //When
+        Board board = (Board) context.getBean("board");
+
+        board.toDoList.addTask("First task to do!");
+        board.inProgressList.addTask("First task in progress!");
+        board.doneList.addTask("First done task!");
+
+        Assert.assertEquals("First task to do!", board.toDoList.getTask(0));
+        Assert.assertEquals("First task in progress!", board.inProgressList.getTask(0));
+        Assert.assertEquals("First done task!", board.doneList.getTask(0));
+
+
         System.out.println("===== Beans list: ==== >>");
         Arrays.stream(context.getBeanDefinitionNames())
                 .forEach(System.out::println);
         System.out.println("<< ===== Beans list ====");
-
-        Board board = (Board) context.getBean("getBoard");
-        board.toDoList.addTask("First task to do!");
-        board.inProgressList.addTask("First task in progress!");
-        board.doneList.addTask("First done task!");
-        //Then
-        Assert.assertEquals("First task to do!", board.toDoList.tasks.get(0));
-        Assert.assertEquals("First task in progress!", board.inProgressList.tasks.get(0));
-        Assert.assertEquals("First done task!", board.doneList.tasks.get(0));
-
 
     }
 }
