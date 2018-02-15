@@ -10,5 +10,4 @@ public final class Board {
         this.inProgressList = inProgressList;
         this.doneList = doneList;
     }
-
 }
