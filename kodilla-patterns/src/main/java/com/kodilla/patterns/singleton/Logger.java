@@ -5,6 +5,10 @@ public class Logger {
     private static Logger loggerInstance = null;
     private String lastLog = "";
 
+    private Logger() {
+
+    }
+
     public static Logger getInstance() {
         if(loggerInstance == null) {
             loggerInstance = new Logger();
