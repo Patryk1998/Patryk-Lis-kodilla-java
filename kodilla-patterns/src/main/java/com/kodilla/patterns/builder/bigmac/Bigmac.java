@@ -14,40 +14,40 @@ public final class Bigmac {
         private String burgers;
         private String sauce;
         private List<String> ingredients = new ArrayList<>();
-        final static String withSesame = "Sesame";
-        final static String noSesame = "noSesame";
-        final static String standard = "standard";
-        final static String barbecue = "barbecue";
-        final static String cheese = "cheese";
-        final static String onion = "onion";
-        final static String cucumber = "cucumber";
-        final static String one = "one";
-        final static String two = "two";
+        final static String WITHSESAME = "Sesame";
+        final static String NOSESAME = "noSesame";
+        final static String STANDARD = "standard";
+        final static String BARBECUE = "barbecue";
+        final static String CHEESE = "cheese";
+        final static String ONION = "onion";
+        final static String CUCUMBER = "cucumber";
+        final static String ONE = "one";
+        final static String TWO = "two";
 
 
         public BigmacBuilder roll(String roll) {
-            if (roll.equals(withSesame) || roll.equals(noSesame)) {
+            if (roll.equals(WITHSESAME) || roll.equals(NOSESAME)) {
                 this.roll = roll;
             }
             return this;
         }
 
         public BigmacBuilder burgers(String burgers) {
-            if (burgers.equals(one) || burgers.equals(two)) {
+            if (burgers.equals(ONE) || burgers.equals(TWO)) {
                 this.burgers = burgers;
             }
             return this;
         }
 
         public BigmacBuilder sauce(String sauce) {
-            if (sauce.equals(standard) || sauce.equals(barbecue)) {
+            if (sauce.equals(STANDARD) || sauce.equals(BARBECUE)) {
                 this.sauce = sauce;
             }
             return this;
         }
 
         public BigmacBuilder ingredients(String ingredient) {
-            if (ingredient.equals(onion) || ingredient.equals(cheese) || ingredient.equals(cucumber)) {
+            if (ingredient.equals(ONION) || ingredient.equals(CHEESE) || ingredient.equals(CUCUMBER)) {
                 ingredients.add(ingredient);
             }
             return this;
