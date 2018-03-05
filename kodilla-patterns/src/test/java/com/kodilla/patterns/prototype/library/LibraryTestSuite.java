@@ -1,6 +1,5 @@
 package com.kodilla.patterns.prototype.library;
 
-import com.sun.javaws.exceptions.CacheAccessException;
 import org.junit.Assert;
 import org.junit.Test;
 

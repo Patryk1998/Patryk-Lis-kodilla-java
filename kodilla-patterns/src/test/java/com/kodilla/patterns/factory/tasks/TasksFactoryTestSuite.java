@@ -2,7 +2,6 @@ package com.kodilla.patterns.factory.tasks;
 
 import org.junit.Assert;
 import org.junit.Test;
-import sun.misc.ASCIICaseInsensitiveComparator;
 
 public class TasksFactoryTestSuite {
 
