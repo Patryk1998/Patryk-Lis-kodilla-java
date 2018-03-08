@@ -3,13 +3,15 @@ package com.kodilla.hibernate.invoice;
 import com.sun.istack.internal.NotNull;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
-@Table(name = "PRODUCTS")
+@Table(name = "PRODUCT")
 public final class Product {
     private int id;
     private String name;
-    private Item item;
+    private List<Item> items = new ArrayList<>();
 
     public Product() {
 
@@ -22,21 +24,24 @@ public final class Product {
     @Id
     @GeneratedValue
     @NotNull
-    @Column(name = "PRODUCT_ID", unique = true)
+    @Column(name = "ID", unique = true)
     public int getId() {
         return id;
     }
 
-    @Column(name = "PRODUCTNAME")
-    @NotNull
-    public String getName() {
-        return name;
+    @OneToMany(
+            targetEntity = Item.class,
+            mappedBy = "product",
+            cascade = CascadeType.ALL,
+            fetch = FetchType.EAGER
+    )
+    public List<Item> getItems() {
+        return items;
     }
 
-    @ManyToOne
-    @JoinColumn(name = "ITEM_ID")
-    public Item getItem() {
-        return item;
+    @Column(name = "NAME")
+    public String getName() {
+        return name;
     }
 
     private void setId(int id) {
@@ -47,8 +52,8 @@ public final class Product {
         this.name = name;
     }
 
-    public void setItem(Item item) {
-        this.item = item;
+    private void setItems(List<Item> items) {
+        this.items = items;
     }
-
 }
+

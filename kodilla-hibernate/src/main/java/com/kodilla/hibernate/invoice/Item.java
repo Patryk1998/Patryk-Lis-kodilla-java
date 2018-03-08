@@ -6,7 +6,7 @@ import javax.persistence.*;
 import java.math.BigDecimal;
 
 @Entity
-@Table(name = "ITEMS")
+@Table(name = "ITEM")
 public final class Item {
     private int id;
     private Product product;
@@ -19,8 +19,7 @@ public final class Item {
 
     }
 
-    public Item(Product product, BigDecimal price, int quantity, BigDecimal value) {
-        this.product = product;
+    public Item(BigDecimal price, int quantity, BigDecimal value) {
         this.price = price;
         this.quantity = quantity;
         this.value = value;
@@ -29,21 +28,18 @@ public final class Item {
     @Id
     @GeneratedValue
     @NotNull
-    @Column(name = "ID")
+    @Column(name = "ID", unique = true)
     public int getId() {
         return id;
     }
 
-    @OneToMany(
-            targetEntity = Product.class,
-            mappedBy = "item",
-            cascade = CascadeType.ALL,
-            fetch = FetchType.EAGER)
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "PRODUCT_ID")
     public Product getProduct() {
         return product;
     }
 
-    @Column(name = "PRODUCT")
+    @Column(name = "PRICE")
     public BigDecimal getPrice() {
         return price;
     }
@@ -68,10 +64,6 @@ public final class Item {
         this.id = id;
     }
 
-    private void setProduct(Product product) {
-        this.product = product;
-    }
-
     private void setPrice(BigDecimal price) {
         this.price = price;
     }
@@ -86,5 +78,9 @@ public final class Item {
 
     public void setInvoice(Invoice invoice) {
         this.invoice = invoice;
+    }
+
+    public void setProduct(Product product) {
+        this.product = product;
     }
 }
