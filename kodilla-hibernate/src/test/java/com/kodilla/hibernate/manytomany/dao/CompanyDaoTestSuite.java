@@ -104,9 +104,13 @@ public class CompanyDaoTestSuite {
         Assert.assertEquals(2, workersLastname.size());
 
         //CleanUp
-        companyDao.delete(softwareMachine);
-        companyDao.delete(dataMaesters);
-        companyDao.delete(greyMatter);
+        try {
+            companyDao.delete(softwareMachine);
+            companyDao.delete(dataMaesters);
+            companyDao.delete(greyMatter);
+        } catch (Exception e) {
+            System.out.println("!!!!!!!!!!!!!!!!!!!!!");
+        }
     }
 
     @Test
@@ -150,9 +154,13 @@ public class CompanyDaoTestSuite {
         Assert.assertEquals(2, companiesWithNameLike.size());
 
         //CleanUp
-        companyDao.delete(greyCompany);
-        companyDao.delete(softwareMachine);
-        companyDao.delete(dataMaesters);
-        companyDao.delete(greyMatter);
+        try {
+            companyDao.delete(greyCompany);
+            companyDao.delete(softwareMachine);
+            companyDao.delete(dataMaesters);
+            companyDao.delete(greyMatter);
+        } catch (Exception e) {
+            System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!");
+        }
     }
 }
