@@ -6,16 +6,12 @@ public class TestClass {
     public static void main(String[] args) {
 
 
-        SudokuElement[][] board = new SudokuElement[9][9];
+        SudokuElement[][] board;
 
         board = BoardMaker.makeBoard();
-        SudokuSolver.solve(board);
+        board = BoardMaker.fillGaps(board);
+        board = SudokuSolver.solve(board);
         Displayer.display(board);
-
-
-
-
-
 
 
 

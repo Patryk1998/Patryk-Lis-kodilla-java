@@ -11,7 +11,7 @@ public class Displayer {
                     }
                     default: {
                         if(board[j][i] == null) System.out.print(" " + "  |");
-                        else System.out.print(" " + board[j][i] + " |");
+                        else System.out.print(" " + board[j][i].getValue() + " |");
                     }
                 }
             }
