@@ -1,53 +1,47 @@
 package com.kodilla.sudoku;
 
-import java.util.Random;
-
 public class SudokuSolver {
+    static Position rememberedPosition = new Position();
 
-
-    public static SudokuElement[][] solve(SudokuElement[][] board) {
-        for (int i = 0; i < 9; i++) {
-            for (int j = 0; j < 9; j++) {
-                if (board[j][i].getStatus() == 1) {
-                } else if (board[j][i].getStatus() == 0) {
-                    board[j][i] = Checker.updatePossibilities(i, j, board);
-                    switch (board[j][i].getPossibilities().size()) {
-                        case 0: {
-                            backTracking(j, i, board);
-                            break;
-                        }
-                        default: {
-                            board[j][i].setFirstPossibleValue();
-                            break;
-                        }
-                    }
-                }
+    public static SudokuElement[][] solve(Position position, SudokuElement[][] board) {
+        if(board[position.horizontal][position.vertical].getStatus() == 1) { //if value was added by player
+            solve(position.setNext(), board);
+        } else if(board[position.horizontal][position.vertical].getValue() != 0) {
+            solve(position.setNext(), board);
+        } else {
+            if(board[position.horizontal][position.vertical].getPossibilities().size() != 0) {
+                board[position.horizontal][position.vertical].setFirstPossibleValue();
+                board[rememberedPosition.horizontal][rememberedPosition.vertical].positionOfPossibilityReset();
+                Checker.removePossibility(position, board);
+                solve(position.setNext(), board);
+            } else {
+                backTrack(position.setBack(), board);
             }
         }
         return board;
     }
 
-    public static void backTracking(int horizontal, int vertical, SudokuElement[][] board) {
-        Position position = Checker.checkPosition(new Position(vertical, horizontal));
-        for (int i = position.vertical; i > 0; i--) {
-            for (int j = position.horizontal; j > 0; j--) {
-                switch (board[j][i].getStatus()) {
-                    case 1: break;
-                    case 0: {
-                        board[j][i] = Checker.updatePossibilities(i, j, board);
-                        switch (board[j][i].getPossibilities().size()) {
-                            case 1: break;
-                            default: {
-                                board[j][i].getPossibilities().remove(0);
-                                board[j][i].setFirstPossibleValue();
-                                board[j][i].setUntouchable();
-                                solve(board);
-                            }
-                        }
-                    }
-
-
+    public static void backTrack(Position position, SudokuElement[][] board) {
+        if(board[position.horizontal][position.vertical].getStatus() == 1) {
+            backTrack(position.setBack(), board);
+        } else {
+            if(board[position.horizontal][position.vertical].getPossibilities().size() == 1) {
+                backTrack(position.setBack(), board);
+            } else {
+                rememberedPosition.horizontal = position.horizontal;
+                rememberedPosition.vertical = position.vertical;
+                if (board[position.horizontal][position.vertical].getPossibilities().size()
+                        >= board[position.horizontal][position.vertical].getPositionOfPossibility() + 1) {
+                    Checker.addPossibility(position, board);
+                    board[position.horizontal][position.vertical].setValueByIndex(board[position.horizontal][position.vertical].getPositionOfPossibility() + 1);
+                    Checker.removePossibility(position, board);
+                    board[position.horizontal][position.vertical].positionOfPossibilityAdd();
+                    solve(position.setNext(), board);
                 }
+                Checker.addPossibility(position, board);
+                board[position.horizontal][position.vertical].setValueZero();
+                backTrack(position.setBack(), board);
+
             }
         }
 
