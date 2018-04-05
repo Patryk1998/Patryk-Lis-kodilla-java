@@ -21,7 +21,7 @@ public class BoardMaker {
                 sudokuElement.setValueByNumber(enteredValue1.getNumber());
                 board[enteredValue1.getHorizontal()][enteredValue1.getVertical()] = sudokuElement;
                 board[enteredValue1.getHorizontal()][enteredValue1.getVertical()].setUntouchable();
-                if (!checker.checkIfPut(enteredValue1.getPosition(), board)) {
+                if (checker.checkIfPut(board[enteredValue1.getHorizontal()][enteredValue1.getVertical()].getValue(), enteredValue1.getPosition(), board) != 24) {
                     board[enteredValue1.getHorizontal()][enteredValue1.getVertical()] = null;
                     System.out.println("Not possible to put a number!");
                 }

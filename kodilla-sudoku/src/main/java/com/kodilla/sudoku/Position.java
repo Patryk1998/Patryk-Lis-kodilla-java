@@ -17,12 +17,13 @@ public class Position {
     }
 
     public Position setNext() {
-        if(horizontal < 8) {
+        if (horizontal < 8) {
             this.horizontal++;
         } else {
             this.horizontal = 0;
             this.vertical++;
         }
+
         return this;
     }
 

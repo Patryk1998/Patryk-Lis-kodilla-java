@@ -1,23 +1,28 @@
 package com.kodilla.sudoku;
 
+import javafx.geometry.Pos;
+
 public class SudokuSolver {
     static Position rememberedPosition = new Position();
 
     public static SudokuElement[][] solve(Position position, SudokuElement[][] board) {
-        if(board[position.horizontal][position.vertical].getStatus() == 1) { //if value was added by player
+        if (board[position.horizontal][position.vertical].getStatus() == 1) { //if value was added by player
             solve(position.setNext(), board);
-        } else if(board[position.horizontal][position.vertical].getValue() != 0) {
+        } else if (board[position.horizontal][position.vertical].getValue() != 0) {
             solve(position.setNext(), board);
         } else {
-            if(board[position.horizontal][position.vertical].getPossibilities().size() != 0) {
+            if (board[position.horizontal][position.vertical].getPossibilities().size() != 0) {
                 board[position.horizontal][position.vertical].setFirstPossibleValue();
-                board[rememberedPosition.horizontal][rememberedPosition.vertical].positionOfPossibilityReset();
+//                board[rememberedPosition.horizontal][rememberedPosition.vertical].positionOfPossibilityReset();
                 Checker.removePossibility(position, board);
-                solve(position.setNext(), board);
+                if (position.horizontal + position.vertical != 16) {
+                    solve(position.setNext(), board);
+                }
             } else {
                 backTrack(position.setBack(), board);
             }
         }
+
         return board;
     }
 
@@ -31,7 +36,7 @@ public class SudokuSolver {
                 rememberedPosition.horizontal = position.horizontal;
                 rememberedPosition.vertical = position.vertical;
                 if (board[position.horizontal][position.vertical].getPossibilities().size()
-                        >= board[position.horizontal][position.vertical].getPositionOfPossibility() + 1) {
+                        > board[position.horizontal][position.vertical].getPositionOfPossibility() + 1) {
                     Checker.addPossibility(position, board);
                     board[position.horizontal][position.vertical].setValueByIndex(board[position.horizontal][position.vertical].getPositionOfPossibility() + 1);
                     Checker.removePossibility(position, board);
@@ -40,6 +45,7 @@ public class SudokuSolver {
                 }
                 Checker.addPossibility(position, board);
                 board[position.horizontal][position.vertical].setValueZero();
+                board[position.horizontal][position.vertical].positionOfPossibilityReset();
                 backTrack(position.setBack(), board);
 
             }
