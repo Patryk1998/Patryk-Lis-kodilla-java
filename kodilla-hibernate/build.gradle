@@ -30,4 +30,5 @@ dependencies {
 	runtime('mysql:mysql-connector-java')
 	testCompile('org.springframework.boot:spring-boot-starter-test')
 	compile 'org.springframework.boot:spring-boot-starter-data-jpa'
+	compile('org.springframework:spring-jdbc:4.2.2.RELEASE')
 }
