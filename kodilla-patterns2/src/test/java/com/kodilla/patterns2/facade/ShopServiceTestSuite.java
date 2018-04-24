@@ -1,9 +1,6 @@
 package com.kodilla.patterns2.facade;
 
-import com.kodilla.patterns2.facade.api.ItemDto;
-import com.kodilla.patterns2.facade.api.OrderDto;
-import com.kodilla.patterns2.facade.api.OrderFacade;
-import com.kodilla.patterns2.facade.api.OrderProcessingException;
+import com.kodilla.patterns2.facade.api.*;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -75,7 +72,6 @@ public class ShopServiceTestSuite {
         try {
             orderFacade.processOrder(order, 1L);
         } catch(OrderProcessingException e) {
-            //
         }
     }
 }
