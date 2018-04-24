@@ -1,7 +1,5 @@
 package com.kodilla.hibernate.invoice;
 
-import com.sun.istack.internal.NotNull;
-
 import javax.persistence.*;
 import java.math.BigDecimal;
 
@@ -27,7 +25,6 @@ public final class Item {
 
     @Id
     @GeneratedValue
-    @NotNull
     @Column(name = "ID", unique = true)
     public int getId() {
         return id;

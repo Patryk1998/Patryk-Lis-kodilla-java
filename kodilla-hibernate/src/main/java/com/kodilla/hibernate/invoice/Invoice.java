@@ -1,7 +1,5 @@
 package com.kodilla.hibernate.invoice;
 
-import com.sun.istack.internal.NotNull;
-
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -23,7 +21,6 @@ public final class Invoice {
 
     @Id
     @GeneratedValue
-    @NotNull
     @Column(name = "ID", unique = true)
     public int getId() {
         return id;

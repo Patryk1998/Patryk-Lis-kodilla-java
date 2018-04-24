@@ -1,7 +1,6 @@
 package com.kodilla.hibernate.task;
 
 import com.kodilla.hibernate.tasklist.TaskList;
-import com.sun.istack.internal.NotNull;
 
 import javax.persistence.*;
 import java.util.Date;
@@ -50,7 +49,6 @@ public final class Task {
 
     @Id
     @GeneratedValue
-    @NotNull
     @Column(name = "ID", unique = true)
     public int getId() {
         return id;
@@ -61,7 +59,6 @@ public final class Task {
         return description;
     }
 
-    @NotNull
     @Column(name="CREATED")
     public Date getCreated() {
         return created;

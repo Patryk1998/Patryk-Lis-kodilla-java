@@ -1,7 +1,5 @@
 package com.kodilla.hibernate.task;
 
-import com.sun.istack.internal.NotNull;
-
 import javax.persistence.*;
 import java.math.BigDecimal;
 
@@ -22,7 +20,6 @@ public class TaskFinancialDetails {
 
     @Id
     @GeneratedValue
-    @NotNull
     @Column(name = "ID", unique = true)
     public int getId() {
         return id;
