@@ -2,11 +2,13 @@ package com.kodilla.patterns2.observer.homework;
 
 import java.util.ArrayDeque;
 import java.util.ArrayList;
+import java.util.Deque;
+import java.util.List;
 
 public class Student implements Observable {
     private String studentName;
-    private ArrayDeque<String> homeworks;
-    private ArrayList<Observer> observers;
+    private Deque<String> homeworks;
+    private List<Observer> observers;
 
     public Student(String studentName) {
         this.studentName = studentName;
