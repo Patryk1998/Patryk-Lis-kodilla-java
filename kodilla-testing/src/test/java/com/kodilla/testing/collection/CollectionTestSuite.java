@@ -41,7 +41,6 @@ public class CollectionTestSuite
         ArrayList<Integer> resultList = new ArrayList<>();
         resultList.add(42);
         //Then
-        int finalNormalListSize = finalNormalList.size();
         Assert.assertEquals(resultList, finalNormalList);
     }
 }
