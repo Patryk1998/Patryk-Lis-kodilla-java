@@ -1,5 +1,6 @@
 package com.kodilla.patterns2.facade.api;
 
+import com.kodilla.patterns2.facade.Order;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
@@ -14,9 +15,10 @@ public class FacadeWatcher {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(FacadeWatcher.class);
 
-    @Before("execution(* com.kodilla.patterns2.facade.api.OrderFacade.processOrder(..))")
-    public void logEvent() {
-        LOGGER.info("!!!!!!!!!!!!!!!!!!!!!");
+    @Before("execution(* com.kodilla.patterns2.facade.api.OrderFacade.processOrder(..))" +
+            "&& args(order, userId) && target (object))")
+    public void logEvent(Order order, Long userId, Object object) {
+        LOGGER.info("Order " + order.getOrderId() + "User " + userId + object.getClass().getName());
     }
 
     @Around("execution(* com.kodilla.patterns2.facade.api.OrderFacade.processOrder(..))")

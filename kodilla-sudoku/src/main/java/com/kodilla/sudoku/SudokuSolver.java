@@ -6,20 +6,22 @@ public class SudokuSolver {
     static Position rememberedPosition = new Position();
 
     public static SudokuElement[][] solve(Position position, SudokuElement[][] board) {
-        if (board[position.horizontal][position.vertical].getStatus() == 1) { //if value was added by player
-            solve(position.setNext(), board);
-        } else if (board[position.horizontal][position.vertical].getValue() != 0) {
-            solve(position.setNext(), board);
-        } else {
-            if (board[position.horizontal][position.vertical].getPossibilities().size() != 0) {
-                board[position.horizontal][position.vertical].setFirstPossibleValue();
-//                board[rememberedPosition.horizontal][rememberedPosition.vertical].positionOfPossibilityReset();
-                Checker.removePossibility(position, board);
-                if (position.horizontal + position.vertical != 16) {
-                    solve(position.setNext(), board);
-                }
+        while (position.horizontal + position.vertical != 16) {
+            if (board[position.horizontal][position.vertical].getStatus() == 1) { //if value was added by player
+                solve(position.setNext(), board);
+            } else if (board[position.horizontal][position.vertical].getValue() != 0) {
+                solve(position.setNext(), board);
             } else {
-                backTrack(position.setBack(), board);
+                if (board[position.horizontal][position.vertical].getPossibilities().size() != 0) {
+                    board[position.horizontal][position.vertical].setFirstPossibleValue();
+//                board[rememberedPosition.horizontal][rememberedPosition.vertical].positionOfPossibilityReset();
+                    Checker.removePossibility(position, board);
+
+                    solve(position.setNext(), board);
+
+                } else {
+                    backTrack(position.setBack(), board);
+                }
             }
         }
 
@@ -53,4 +55,5 @@ public class SudokuSolver {
 
 
     }
+
 }
