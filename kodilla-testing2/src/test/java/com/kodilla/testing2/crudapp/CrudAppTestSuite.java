@@ -47,7 +47,7 @@ public class CrudAppTestSuite {
 
         WebElement addButton = driver.findElement(By.xpath(XPATH_ADD_BUTTON));
         addButton.click();
-        Thread.sleep(2000);
+        Thread.sleep(7000);
 
         return taskName;
     }
@@ -91,11 +91,13 @@ public class CrudAppTestSuite {
         driverTrello.findElement(By.id("password")).sendKeys("kodilla123");
         driverTrello.findElement(By.id("login")).submit();
 
-        Thread.sleep(2000);
+        Thread.sleep(7000);
+
+        driverTrello.findElement(By.xpath("//a[@href=\"/patryklis/boards\"]")).click();
 
         driverTrello.findElements(By.xpath("//a[@class=\"board-tile\"]")).stream()
                 .filter(aHref -> aHref.findElements(By.xpath(".//span[@title=\"Kodilla Application\"]")).size() > 0)
-                .forEach(aHref -> aHref.click());
+                .forEach(WebElement::click);
 
         Thread.sleep(2000);
 
