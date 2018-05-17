@@ -9,6 +9,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
 
+import javax.swing.text.TabableView;
 import java.util.Random;
 import java.util.stream.Collector;
 import java.util.stream.Collectors;
@@ -47,7 +48,7 @@ public class CrudAppTestSuite {
 
         WebElement addButton = driver.findElement(By.xpath(XPATH_ADD_BUTTON));
         addButton.click();
-        Thread.sleep(7000);
+        Thread.sleep(15000);
 
         return taskName;
     }
@@ -91,20 +92,30 @@ public class CrudAppTestSuite {
         driverTrello.findElement(By.id("password")).sendKeys("kodilla123");
         driverTrello.findElement(By.id("login")).submit();
 
-        Thread.sleep(7000);
+        Thread.sleep(3000);
 
         driverTrello.findElement(By.xpath("//a[@href=\"/patryklis/boards\"]")).click();
+
+        Thread.sleep(5000);
 
         driverTrello.findElements(By.xpath("//a[@class=\"board-tile\"]")).stream()
                 .filter(aHref -> aHref.findElements(By.xpath(".//span[@title=\"Kodilla Application\"]")).size() > 0)
                 .forEach(WebElement::click);
 
-        Thread.sleep(2000);
+        Thread.sleep(5000);
 
-        result = driverTrello.findElements(By.xpath("//span")).stream()
-                .filter(theSpan -> theSpan.getText().contains(taskName))
-                .collect(Collectors.toList())
-                .size() > 0;
+        try {
+            result = driverTrello.findElements(By.xpath("//span")).stream()
+                    .filter(theSpan -> theSpan.getText().contains(taskName))
+                    .collect(Collectors.toList())
+                    .size() > 0;
+        }
+        catch (Exception e) {
+            result = driverTrello.findElements(By.xpath("//span")).stream()
+                    .filter(theSpan -> theSpan.getText().contains(taskName))
+                    .collect(Collectors.toList())
+                    .size() > 0;
+        }
 
         driverTrello.close();
 
@@ -117,5 +128,6 @@ public class CrudAppTestSuite {
         sendTestTaskToTrello(taskName);
         deleteTestTaskFromApplication(taskName);
         assertTrue(checkTaskExistsInTrello(taskName));
+
     }
 }
