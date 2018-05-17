@@ -1,6 +1,5 @@
 package com.kodilla.sudoku;
 
-import javafx.geometry.Pos;
 
 public class Position {
     int vertical;

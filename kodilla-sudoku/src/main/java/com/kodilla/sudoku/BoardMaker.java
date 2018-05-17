@@ -1,13 +1,14 @@
 package com.kodilla.sudoku;
 
+import javafx.geometry.Pos;
+
 import java.util.Scanner;
 
 public class BoardMaker {
     static Scanner input = new Scanner(System.in);
     static Checker checker = new Checker();
 
-    public static SudokuElement[][] makeBoard() {
-        SudokuElement[][] board = new SudokuElement[9][9];
+    public static SudokuElement[][] makeBoard(SudokuElement[][] board) {
         System.out.println("SUDOKU GAME");
         System.out.println("If you want finish and start algorithm press 'x'");
         String enteredValue = "";
@@ -18,10 +19,13 @@ public class BoardMaker {
             if (!enteredValue.equals("x")) {
                 EnteredValue enteredValue1 = new EnteredValue(enteredValue);
                 SudokuElement sudokuElement = new SudokuElement();
-                sudokuElement.setValueByNumber(enteredValue1.getNumber());
+                sudokuElement.setValue(enteredValue1.getNumber());
                 board[enteredValue1.getHorizontal()][enteredValue1.getVertical()] = sudokuElement;
                 board[enteredValue1.getHorizontal()][enteredValue1.getVertical()].setUntouchable();
-                if (checker.checkIfPut(board[enteredValue1.getHorizontal()][enteredValue1.getVertical()].getValue(), enteredValue1.getPosition(), board) != 24) {
+                Position position = new Position();
+                position.vertical = enteredValue1.getVertical();
+                position.horizontal = enteredValue1.getHorizontal();
+                if (!checker.validation(position, board)) {
                     board[enteredValue1.getHorizontal()][enteredValue1.getVertical()] = null;
                     System.out.println("Not possible to put a number!");
                 }
@@ -42,15 +46,4 @@ public class BoardMaker {
         return board;
     }
 
-        public static SudokuElement[][] updatePossibilities(Position position, SudokuElement[][] board) {
-            for (int i = 0; i < 9; i++) {
-                board[position.horizontal][position.vertical].getPossibilities().remove(board[i][position.vertical].getValue());
-                board[position.horizontal][position.vertical].getPossibilities().remove(board[position.horizontal][i].getValue());
-                board[position.horizontal][position.vertical].getPossibilities().remove(board[(position.horizontal / 3) * 3 + i % 3][(position.vertical / 3) * 3 + i / 3].getValue());
-            }
-            if(position.horizontal + position.vertical != 16) {
-                updatePossibilities(position.setNext(), board);
-            }
-            return board;
-        }
 }
