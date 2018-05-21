@@ -1,6 +1,5 @@
 package com.kodilla.sudoku;
 
-import javafx.geometry.Pos;
 
 import java.util.Scanner;
 

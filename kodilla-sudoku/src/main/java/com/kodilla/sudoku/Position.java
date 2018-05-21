@@ -4,6 +4,7 @@ package com.kodilla.sudoku;
 public class Position {
     int vertical;
     int horizontal;
+    boolean end = false;
 
     public Position setBack() {
         if(horizontal > 0) {
@@ -19,8 +20,12 @@ public class Position {
         if (horizontal < 8) {
             this.horizontal++;
         } else {
-            this.horizontal = 0;
-            this.vertical++;
+            if(this.horizontal == 8 && this.vertical == 8) {
+                this.end = true;
+            } else {
+                this.horizontal = 0;
+                this.vertical++;
+            }
         }
 
         return this;

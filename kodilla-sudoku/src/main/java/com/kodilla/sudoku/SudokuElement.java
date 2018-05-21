@@ -1,7 +1,5 @@
 package com.kodilla.sudoku;
 
-import java.util.HashSet;
-import java.util.Set;
 
 public class SudokuElement {
     private int value = 0;

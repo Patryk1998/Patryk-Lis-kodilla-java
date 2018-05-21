@@ -1,7 +1,7 @@
 package com.kodilla.sudoku;
 
 
-import javafx.geometry.Pos;
+
 
 public class Checker {
 
@@ -15,7 +15,7 @@ public class Checker {
             if(board[position.horizontal][i].getValue() != value) trueCounter++;
             if(board[(position.horizontal/3)*3 + i%3][(position.vertical/3)*3 + i/3].getValue() != value) trueCounter++;
         }
-        if(trueCounter == 24) return true;
+        if(trueCounter == 24 && board[position.horizontal][position.vertical].getValue() != 0) return true;
         else return false;
     }
 }
